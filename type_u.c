@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 03:59:49 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/24 04:14:46 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/24 04:34:57 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			put_u(t_ft_printf *tst,unsigned long long int nbr)
 		while (tst->width-- >0)
 			write(1, " ", 1);
 	}
-	else //else if (tst->op_0)
+	else if (tst->op_0)
 	{
 		if (tst->precision >= 0)
 		{
@@ -56,16 +56,20 @@ void			put_u(t_ft_printf *tst,unsigned long long int nbr)
 		}
 		else
 			tst->precision = tst->width;
-		if (tst->op_0)
-		{
-			while (c++ < tst->precision)
-				write(1, "0", 1);
-		}
-		else
-		{
-			while (c++ < tst->precision)
-				write(1, " ", 1);
-		}
+		while (c++ < tst->precision)
+			write(1, "0", 1);
+		if (nbr > 0)
+			ft_putnbr_unsigned(nbr);
+		else if (tst->precision)
+			write(1, "0", 1);
+	}
+	else
+	{
+		tst->width -= (ft_max(c, tst->precision));
+		while (tst->width-- >0)
+			write(1, " ", 1);
+		while (c++ < tst->precision)
+			write(1, "0", 1);
 		if (nbr > 0)
 			ft_putnbr_unsigned(nbr);
 		else if (tst->precision)

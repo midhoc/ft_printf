@@ -15,10 +15,10 @@ void	init_struct(t_ft_printf *tst)
 
 int write_format(t_ft_printf *tst, va_list argv)
 {
-	int c;
-
-	c = va_arg(argv, int);
-	ft_putnbr(c);
+	if (tst->type == 0 || tst->type == 1)
+		type_d(tst, argv);
+	else if (tst->type == 3)
+		type_u(tst, argv);
 	return(1);
 }
 
@@ -37,7 +37,7 @@ int		ft_printf(const char * str, ... )
 			//printf("\n******************\n");
 			init_struct(&tst);
 			if(get_format(&(str),&tst))
-				type_d(&tst, argv);
+				write_format(&tst, argv);
 			//printf("+ : %d\n- : %d\n' ' : %d\n0 : %d\n# : %d\nw : %d\np : %d\nf : %d\nt : %d\n",
 			//tst.op_pls, tst.op_mns, tst.op_sp, tst.op_0, tst.op_htg, tst.width, tst.precision, tst.length, tst.type);
 
@@ -54,7 +54,7 @@ int		ft_printf(const char * str, ... )
 
 int main()
 {
-	#define M ("% d", -9999);
+	#define M ("%+3.d", 0);
 
 //("{%+0.-3d}", 0);
 //		"{%+03d}", 0

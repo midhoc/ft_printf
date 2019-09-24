@@ -6,18 +6,11 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/24 03:22:01 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/24 04:29:17 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int				max(int i, int ii)
-{
-	if(i < ii)
-		return (ii);
-	return(i);
-}
 
 int				count_digit_d(t_ft_printf *tst, long long int nbr)
 {
@@ -30,8 +23,6 @@ int				count_digit_d(t_ft_printf *tst, long long int nbr)
 		nb = -1 * nbr;
 	else if (nbr > 0)
 		nb = nbr;
-	// if(nbr < 0 || tst->op_pls || tst->op_sp)
-	// 	counter++;
 	else if (nbr == 0 && tst->precision == 0)
 	 	return (0);
 	while (nb > 9)
@@ -66,7 +57,7 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 	c = count_digit_d(tst, nbr);
 	if (tst->op_mns)
 	{
-		tst->width -= (put_sign(tst, nbr, 0) + max(c, tst->precision));
+		tst->width -= (put_sign(tst, nbr, 0) + ft_max(c, tst->precision));
 		while (c++ < tst->precision)
 			write(1, "0", 1);
 		if (nbr < 0)
@@ -78,28 +69,18 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 		while (tst->width-- >0)
 			write(1, " ", 1);
 	}
-	else
+	else if (tst->op_0)
 	{
-
 		if (tst->precision >= 0)
 		{
-			tst->width -= (put_sign(tst, nbr, !tst->op_0) + max(c, tst->precision));
+			tst->width -= (put_sign(tst, nbr, !tst->op_0) + ft_max(c, tst->precision));
 			while (tst->width-- >0)
 				write(1, " ", 1);
 		}
 		else
 			tst->precision = tst->width - put_sign(tst, nbr, !tst->op_0);
-		if (tst->op_0)
-		{
-			while (c++ < tst->precision)
-				write(1, "0", 1);
-		}
-		else
-		{
-			while (c++ < tst->precision)
-				write(1, " ", 1);
-			put_sign(tst, nbr, 0);
-		}
+		while (c++ < tst->precision)
+			write(1, "0", 1);
 		if (nbr < 0)
 			ft_putnbr_unsigned((unsigned long long)nbr * -1);
 		else if (nbr > 0)
@@ -107,27 +88,21 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 		else if (tst->precision)
 			write(1, "0", 1);
 	}
-/*	else
+	else
 	{
-
-		if (tst->precision >= 0)
-		{
-			tst->width -= (put_sign(tst, nbr, 1) + max(c, tst->precision));
-			while (tst->width-- >0)
-				write(1, " ", 1);
-		}
-		else
-			tst->precision = tst->width - put_sign(tst, nbr, 1);
-		while (c++ < tst->precision)
+		tst->width -= (put_sign(tst, nbr, 1) + ft_max(c, tst->precision));
+		while (tst->width-- >0)
 			write(1, " ", 1);
 		put_sign(tst, nbr, 0);
+		while (c++ < tst->precision)
+			write(1, "0", 1);
 		if (nbr < 0)
 			ft_putnbr_unsigned((unsigned long long)nbr * -1);
 		else if (nbr > 0)
 			ft_putnbr_unsigned((unsigned long long)nbr);
 		else if (tst->precision)
 			write(1, "0", 1);
-	}*/
+	}
 }
 
 static int		type_d_hh(t_ft_printf *tst, va_list argv)

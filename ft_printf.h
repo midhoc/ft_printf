@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/23 00:19:10 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/24 04:14:01 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int		get_type(char **str, t_ft_printf *tst);
 int		get_format(char **str, t_ft_printf *tst);
 
 int		type_d(t_ft_printf *tst, va_list argv);
+void	put_d(t_ft_printf *tst, long long int nbr);
 
-
+int		type_u(t_ft_printf *tst, va_list argv);
+void	put_u(t_ft_printf *tst,unsigned long long int nbr);
 
 int		count_digit_d(t_ft_printf *tst, long long int nbr);
 #endif

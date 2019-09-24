@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/24 02:22:34 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/24 02:51:44 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,15 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 	}
 	else if(tst->op_0)
 	{
-		tst->width -= (put_sign(tst, nbr) + max(c, tst->precision));
+
 		if (tst->precision >= 0)
 		{
+			tst->width -= (put_sign(tst, nbr) + max(c, tst->precision));
 			while (tst->width-- >0)
 				write(1, " ", 1);
 		}
 		else
-			tst->precision = tst->width;
+			tst->precision = tst->width - put_sign(tst, nbr);
 		while (c++ < tst->precision)
 			write(1, "0", 1);
 		if (nbr < 0)
@@ -94,23 +95,6 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 			ft_putnbr_unsigned((unsigned long long)nbr);
 		else if (tst->precision)
 			write(1, "0", 1);
-
-		// if (nbr < 0)
-		// 	write(1,"-", 1);
-		// else if (tst->op_pls)
-		// 	write(1, "+", 1);
-		// else if (tst->op_sp)
-		// 	write(1, " ", 1);
-		// 	while (max(c, tst->precision) < tst->width--)
-		// 		write(1, " ", 1);
-		// 	while (c++ < tst->precision)
-		// 		write(1, "0", 1);
-		// if (nbr > 0)
-		// 	ft_putnbr(nbr);
-		// else if (nbr < 0)
-		// 	ft_putnbr((unsigned long long)nbr * -1);
-		// else if (tst->precision)
-		// 	write(1, "0", 1);
 	}
 	else
 	{

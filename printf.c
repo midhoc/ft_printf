@@ -54,8 +54,9 @@ int		ft_printf(const char * str, ... )
 
 int main()
 {
-	#define M "{%010d}", 42
+	#define M ("{%+3d}", 0);
 
+//("{%+0.-3d}", 0);
 //		"{%+03d}", 0
 	// 	"{% 03d}", 0
 	//ft_putnbr(LONG_MAX);
@@ -69,9 +70,9 @@ int main()
 //ft_printf("%s\n",25,"11111\066666",5);
 //printf("%lld\n%lld\n", LONG_MIN + 1, LONG_MAX );
 //ft_putnbr((short int)2147483647);
-ft_printf(M);
+ft_printf M
 printf("\n");
-printf(M);
+printf M
 	// ft_printf("%d\n",19.5);
 	// ft_printf("%d\n",19.5);
 	// ft_printf("%d\n",19.5);

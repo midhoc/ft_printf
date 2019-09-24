@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:08:36 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/22 18:08:48 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/24 02:49:04 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		get_width_precision(char **str, t_ft_printf *tst)
 	else if (**str == '.')
 	{
 		(*str)++;
-		tst->precision = ft_atoi(*str);
+		if ((tst->precision = ft_atoi(*str)) < 0)
+			tst->precision = 0;
 		while(ft_isdigit(**str))
 			(*str)++;
 	}

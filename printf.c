@@ -54,7 +54,7 @@ int		ft_printf(const char * str, ... )
 
 int main()
 {
-	#define M ("{%+3d}", 0);
+	#define M ("% d", -9999);
 
 //("{%+0.-3d}", 0);
 //		"{%+03d}", 0

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/24 04:14:01 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/26 03:52:43 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ void	put_d(t_ft_printf *tst, long long int nbr);
 
 int		type_u(t_ft_printf *tst, va_list argv);
 void	put_u(t_ft_printf *tst,unsigned long long int nbr);
+
+int		type_s(t_ft_printf *tst, va_list argv);
+int		type_s_l(t_ft_printf *tst, va_list argv);
+void	type_s_op(t_ft_printf *tst, int i, char *c);
+void	type_s_op_mns(t_ft_printf *tst, int i, char *c);
+void	type_s_l_op(t_ft_printf *tst, int i, int *c);
+void	type_s_l_op_mns(t_ft_printf *tst, int i, int *c);
+
+int		type_c(t_ft_printf *tst, va_list argv);
+int		type_c_l(t_ft_printf *tst, va_list argv);
+int		type_c_(t_ft_printf *tst, va_list argv);
+int		type_per(t_ft_printf *tst, va_list argv);
 
 int		count_digit_d(t_ft_printf *tst, long long int nbr);
 #endif

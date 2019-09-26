@@ -6,7 +6,7 @@
 #    By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/23 15:42:50 by hmidoun           #+#    #+#              #
-#    Updated: 2019/09/24 03:56:52 by hmidoun          ###   ########.fr        #
+#    Updated: 2019/09/26 00:08:29 by hmidoun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ SRC = ft_atoi.c \
 	ft_abs.c \
 	ft_splitdel.c \
 	ft_putnbr_unsigned.c \
-	ft_max.c
+	ft_max.c \
+	ft_min.c
 
 HEADER = ./includes/libft.h
 INCLUDE_PATH = ./includes

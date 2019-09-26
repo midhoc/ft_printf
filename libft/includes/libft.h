@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 12:32:34 by midounhoc         #+#    #+#             */
-/*   Updated: 2019/09/24 03:58:51 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/26 00:08:14 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ int		get_next_line(int const fd, char **line);
 int		ft_sqrt_max(int nb);
 int		ft_abs(int nb);
 int		ft_max(int i, int ii);
+int		ft_min(int i, int ii);
 
 #endif

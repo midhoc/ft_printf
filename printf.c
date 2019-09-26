@@ -19,6 +19,12 @@ int write_format(t_ft_printf *tst, va_list argv)
 		type_d(tst, argv);
 	else if (tst->type == 3)
 		type_u(tst, argv);
+	else if (tst->type == 7)
+		type_s(tst, argv);
+	else if (tst->type == 6)
+		type_c(tst, argv);
+	else if (tst->type == 10)
+		type_per(tst, argv);
 	return(1);
 }
 
@@ -54,7 +60,7 @@ int		ft_printf(const char * str, ... )
 
 int main()
 {
-	#define M ("%+3.d", 0);
+	#define M ("{%p}", 0);
 
 //("{%+0.-3d}", 0);
 //		"{%+03d}", 0
@@ -70,13 +76,12 @@ int main()
 //ft_printf("%s\n",25,"11111\066666",5);
 //printf("%lld\n%lld\n", LONG_MIN + 1, LONG_MAX );
 //ft_putnbr((short int)2147483647);
+
+
 ft_printf M
 printf("\n");
 printf M
-	// ft_printf("%d\n",19.5);
-	// ft_printf("%d\n",19.5);
-	// ft_printf("%d\n",19.5);
-	// ft_printf("%d\n",19.5);
-	// ft_printf("%d\n",19.5);
+//ft_putstr(0);
 	return(0);
 }
+

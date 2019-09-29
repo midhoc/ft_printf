@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/26 03:52:43 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/28 02:26:47 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # define HH 6
 # define LL 7
 
+typedef struct s_ft_float
+{
+	int	sign;
+	int	exp;
+	int	t[52];
+}t_ft_float;
 
 typedef struct s_ft_printf
 {

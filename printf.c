@@ -25,6 +25,10 @@ int write_format(t_ft_printf *tst, va_list argv)
 		type_c(tst, argv);
 	else if (tst->type == 10)
 		type_per(tst, argv);
+	else if (tst->type == 9)
+		{
+			ft_putnbr(va_arg(argv, double));
+		}
 	return(1);
 }
 
@@ -58,29 +62,83 @@ int		ft_printf(const char * str, ... )
 	return(1);
  }
 
+void		get_s_e_m(double f, t_ft_float *flt)
+{
+	int						i;
+	unsigned long long int	t;
+
+	i = 63;
+	ft_bzero(flt->t, sizeof(flt->t));
+	t =  *(unsigned long long int*)&f;
+	if ((t << (64-(i+1))) >> 63)
+		flt->sign = 1;
+	while (--i > 51)
+	{
+		flt->exp *= 2;
+		if ((t << (64-(i+1))) >> 63)
+			flt->exp++;
+	}
+	while (i >= 0)
+	{
+	//	printf("%d\n",51 -i);
+		if ((t << (64-(i+1))) >> 63)
+			flt->t[51 - i] = 1;
+		i--;
+	}
+	//  for(i = 0; i < 52; i++)
+	//  	printf("%d : %d\n",51 -i, flt->t[i]);
+	// ft_putchar('\n');
+	// ft_putnbr(flt->sign);
+	// ft_putchar('\n');
+	// ft_putnbr(flt->exp);
+	// ft_putchar('\n');
+}
+
+#include <math.h>//!////////////
+void		izan(t_ft_float *flt, int i, int p_5, unsigned long long int s)
+{
+	int r;
+	unsigned long long int k;
+
+	r = s % 10;
+	k = s / 10;
+	if (--i > 0)
+	{
+		k += flt->t[i] * pow(5, i) * pow(2, flt->exp - 1023);
+		ft_putnbr(r);
+		izan(flt, i, p_5 * 5, k);
+	}
+	else if (i == 0)
+	{
+		 k += pow(2, flt->exp - 1023);
+		ft_putnbr(r);
+		izan(flt, --i, p_5 * 5, k);
+	}
+	else
+		printf("\n%llu\n",s);
+}
+
+
+
 int main()
 {
-	#define M ("{%p}", 0);
+	#define M ("{%.50f}", 5.2222);
+	t_ft_float t;
+	double	k = 1.81;
+	get_s_e_m(k, &t);
+	izan(&t, 52, 5, 0);
+	//printf("\n%.100lf",k);
+	// unsigned long long int p = 1;
+	// for (int i=0; i < 50; i++ )
+	// 	printf("%llu\n", p*=5);
 
 //("{%+0.-3d}", 0);
 //		"{%+03d}", 0
 	// 	"{% 03d}", 0
-	//ft_putnbr(LONG_MAX);
-	//ft_printf("%p\n",190,16);
-	//ft_printf("%ld\n%d\n", 214748364700, 15);
-// ft_putnbr(printf("{%#+d}", 0));
-// ft_putnbr(printf("{%++d}", 0));
-// ft_putnbr(printf("{%-+d}", 0));
-// ft_putnbr(printf("{% +d}", 0));
-// ft_putnbr(printf("{%0+d}", 0));
-//ft_printf("%s\n",25,"11111\066666",5);
-//printf("%lld\n%lld\n", LONG_MIN + 1, LONG_MAX );
-//ft_putnbr((short int)2147483647);
 
-
-ft_printf M
-printf("\n");
-printf M
+// ft_printf M
+// printf("\n");
+// printf M
 //ft_putstr(0);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 02:40:16 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 02:47:35 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/30 03:00:39 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			put_x(t_ft_printf *tst, unsigned long long int nbr, int flag_up)
 			write(1, "0", 1);
 		if (nbr > 0)
 			ft_putstr(str);
-		else if (tst->precision > 0)
+		else if (!tst->precision)
 			write(1, "0", 1);
 		while (tst->width-- > 0)
 			write(1, " ", 1);
@@ -63,7 +63,7 @@ void			put_x(t_ft_printf *tst, unsigned long long int nbr, int flag_up)
 			write(1, "0", 1);
 		if (nbr > 0)
 			ft_putstr(str);
-		else if (tst->precision > 0)
+		else if (!tst->precision)
 			write(1, "0", 1);
 	}
 	else
@@ -76,7 +76,7 @@ void			put_x(t_ft_printf *tst, unsigned long long int nbr, int flag_up)
 			write(1, "0", 1);
 		if (nbr > 0)
 			ft_putstr(str);
-		else if (tst->precision > 0)
+		else if (!tst->precision)
 			write(1, "0", 1);
 	}
 	free(str);

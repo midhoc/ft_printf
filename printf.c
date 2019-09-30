@@ -124,7 +124,7 @@ void		izan(t_ft_float *flt, int i, int p_5, unsigned long long int s)
 
 int main()
 {
-	#define M ("a%#.ob",0, 55555, 100000);
+	#define M ("%#.o, %#x", 0, UINT_MAX);
 	// double	k = 1.81;
 	// get_s_e_m(k, &t);
 	// izan(&t, 52, 5, 0);

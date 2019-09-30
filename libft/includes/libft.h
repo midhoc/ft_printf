@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 12:32:34 by midounhoc         #+#    #+#             */
-/*   Updated: 2019/09/26 00:08:14 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/30 02:38:44 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int		ft_sqrt_max(int nb);
 int		ft_abs(int nb);
 int		ft_max(int i, int ii);
 int		ft_min(int i, int ii);
+char	*ft_itoa_base(unsigned long long int value, int base, int flag_up);
 
 #endif

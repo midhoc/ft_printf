@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/24 04:29:17 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/30 01:20:26 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ static int		type_d_l(t_ft_printf *tst, va_list argv)
 	long int c;
 
 	c = va_arg(argv, long int);
-	put_d(tst, (long int)c);
+	put_d(tst, c);
 	return(1);
 }
 

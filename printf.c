@@ -26,9 +26,13 @@ int write_format(t_ft_printf *tst, va_list argv)
 	else if (tst->type == 10)
 		type_per(tst, argv);
 	else if (tst->type == 9)
-		{
-			ft_putnbr(va_arg(argv, double));
-		}
+		ft_putnbr(va_arg(argv, double));
+	else if (tst->type == 2 || tst->type == 11)
+		type_o(tst, argv);
+	else if (tst->type == 4)
+		type_x(tst, argv, 0);
+	else if (tst->type == 5)
+		type_x(tst, argv, 1);
 	return(1);
 }
 
@@ -78,6 +82,7 @@ void		get_s_e_m(double f, t_ft_float *flt)
 		if ((t << (64-(i+1))) >> 63)
 			flt->exp++;
 	}
+	flt->exp -= 1023;
 	while (i >= 0)
 	{
 	//	printf("%d\n",51 -i);
@@ -114,19 +119,18 @@ void		izan(t_ft_float *flt, int i, int p_5, unsigned long long int s)
 		ft_putnbr(r);
 		izan(flt, --i, p_5 * 5, k);
 	}
-	else
-		printf("\n%llu\n",s);
+	printf("\n%llu\n",s);
 }
-
-
 
 int main()
 {
-	#define M ("{%.50f}", 5.2222);
-	t_ft_float t;
-	double	k = 1.81;
-	get_s_e_m(k, &t);
-	izan(&t, 52, 5, 0);
+	#define M ("a%ob",0, 55555, 100000);
+	// double	k = 1.81;
+	// get_s_e_m(k, &t);
+	// izan(&t, 52, 5, 0);
+
+
+
 	//printf("\n%.100lf",k);
 	// unsigned long long int p = 1;
 	// for (int i=0; i < 50; i++ )
@@ -136,9 +140,9 @@ int main()
 //		"{%+03d}", 0
 	// 	"{% 03d}", 0
 
-// ft_printf M
-// printf("\n");
-// printf M
+ft_printf M
+printf("\n");
+printf M
 //ft_putstr(0);
 	return(0);
 }

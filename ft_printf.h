@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 02:48:07 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/30 04:00:21 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ int		type_c_(t_ft_printf *tst, va_list argv);
 int		type_per(t_ft_printf *tst, va_list argv);
 
 int		type_o(t_ft_printf *tst, va_list argv);
+void	put_o(t_ft_printf *tst, unsigned long long int nbr);
 
 int		type_x(t_ft_printf *tst, va_list argv, int flag_up);
+void	put_x(t_ft_printf *tst, unsigned long long int nbr, int flag_up);
 
 int		count_digit_d(t_ft_printf *tst, long long int nbr);
 #endif

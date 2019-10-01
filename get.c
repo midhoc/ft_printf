@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:08:36 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 06:32:07 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 18:48:17 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		get_type(char **str, t_ft_printf *tst)
 	char	*s;
 	char	*c;
 
-	s = "diouxXcspf%O";
+	s = "diouxXcspf%OU";
 	c = ft_strchr(s, **str);
 	if(!c || !*c)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 02:50:01 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 06:22:26 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 18:48:48 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		write_format(t_ft_printf *tst, va_list argv)
 {
 	if (tst->type == 0 || tst->type == 1)
 		type_d(tst, argv);
-	else if (tst->type == 3)
+	else if (tst->type == 3 || tst->type == 12)
 		type_u(tst, argv);
 	else if (tst->type == 7)
 		type_s(tst, argv);

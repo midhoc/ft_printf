@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 03:27:53 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 18:58:14 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,24 @@ static int		type_d_l(t_ft_printf *tst, va_list argv)
 	return(1);
 }
 
+static int		type_d_z(t_ft_printf *tst, va_list argv)
+{
+	size_t c;
+
+	c = va_arg(argv, size_t);
+	put_d(tst, c);
+	return(1);
+}
+
+static int		type_d_j(t_ft_printf *tst, va_list argv)
+{
+	intmax_t c;
+
+	c = va_arg(argv, intmax_t);
+	put_d(tst, c);
+	return(1);
+}
+
 int		type_d(t_ft_printf *tst, va_list argv)
 {
 	int c;
@@ -145,6 +163,10 @@ int		type_d(t_ft_printf *tst, va_list argv)
 		type_d_ll(tst, argv);
 	else if(tst->length == L)
 		type_d_l(tst, argv);
+	else if(tst->length == J)
+		type_d_j(tst, argv);
+	else if(tst->length == Z)
+		type_d_z(tst, argv);
 	else
 	{
 		c = va_arg(argv, int);

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 03:26:17 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 19:34:56 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include "libft.h"
 
+
 # define H 0
 # define L 1
 # define J 2
@@ -24,6 +25,8 @@
 # define L_ 5
 # define HH 6
 # define LL 7
+
+
 
 typedef struct s_ft_float
 {

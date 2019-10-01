@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:08:36 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 18:48:17 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 19:30:13 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,27 @@ int		get_lengths(char **str, t_ft_printf *tst)
 
 	s = "hljztL";
 	c = ft_strchr(s, **str);
-	if(!c || !*c)
-		return(0);
+	if (!c || !*c)
+		return (0);
 	if (**str == 'h' && *((*str)+1) == 'h')
 	{
-			tst->length = 6;
-			(*str) += 2;
+		if (tst->length < HH)
+			tst->length = HH;
+		(*str) += 2;
 	}
 	else if (**str == 'l' && *((*str)+1) == 'l')
 	{
-			tst->length = 7;
-			(*str) += 2;
+		if (tst->length < LL)
+			tst->length = LL;
+		(*str) += 2;
 	}
 	else
 	{
-		tst->length =(c - s);
+		if (tst->length < (c - s))
+			tst->length = (c - s);
 		(*str)++;
 	}
-	return(1);
+	return (1);
 }
 
 int		get_type(char **str, t_ft_printf *tst)

@@ -3,7 +3,7 @@ int main()
 {
 	//double x = 0.15555555556858;
 
-	#define M ("%U , %u", 4294967296, 4294967296)
+	#define M ("%U", 4294967296)
 	// double	k = 1.81;
 	// get_s_e_m(k, &t);
 	// izan(&t, 52, 5, 0);

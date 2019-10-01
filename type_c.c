@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 03:25:03 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/26 04:05:50 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/30 20:56:09 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		type_c(t_ft_printf *tst, va_list argv)
 	return(1);
 }
 
-int		type_per(t_ft_printf *tst, va_list argv)
+int		type_per(t_ft_printf *tst)
 {
 	char	c[2];
 

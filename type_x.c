@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 02:40:16 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 03:53:42 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/30 20:59:32 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int		type_x_l(t_ft_printf *tst, va_list argv, int flag_up)
 	return(1);
 }
 
-static int		type_p(t_ft_printf *tst, va_list argv, int flag_up)
+static int		type_p(t_ft_printf *tst, va_list argv)
 {
 	unsigned long long int c;
 
@@ -56,7 +56,7 @@ int		type_x(t_ft_printf *tst, va_list argv, int flag_up)
 	unsigned int	c;
 
 	if (tst->type == 8)
-		type_p(tst, argv, flag_up);
+		type_p(tst, argv);
 	else if (tst->length == HH || tst->length == H)
 		type_x_hh(tst, argv, flag_up);
 	else if(tst->length == LL)

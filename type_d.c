@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 01:20:26 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/09/30 20:57:29 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int				count_digit_d(t_ft_printf *tst, long long int nbr)
 	unsigned long long int	nb;
 
 	counter = 0;
-
+	nb = 0;
 	if (nbr < 0)
 		nb = -1 * nbr;
 	else if (nbr > 0)

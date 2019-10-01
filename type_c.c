@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 03:25:03 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 20:56:09 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 05:41:24 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ int		type_c_(t_ft_printf *tst, va_list argv)
 
 	c[0] = va_arg(argv, int);
 	c[1] = '\0';
-	if (!c[0])
-		ft_putchar(0);
+	if (!c[0] && tst->op_mns)
+		ft_putchar_buff(0, tst);
 	tst->width--;
 	if (tst->op_mns)
 		type_s_op_mns(tst, 1, c);
 	else
 		type_s_op(tst, 1, c);
+	if (!c[0] && !tst->op_mns)
+		ft_putchar_buff(0, tst);
 	return(1);
 }
 
@@ -35,7 +37,7 @@ int		type_c_l(t_ft_printf *tst, va_list argv)
 	c[0] = va_arg(argv, wchar_t);
 	c[1] = '\0';
 	if (!c[0])
-		ft_putchar(0);
+		ft_putchar_buff(0, tst);
 	tst->width--;
 	if (tst->op_mns)
 		type_s_l_op_mns(tst, 1, c);

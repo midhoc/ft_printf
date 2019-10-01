@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 03:53:00 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 03:53:13 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 03:57:36 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,22 @@ static int		put_sign(t_ft_printf *tst,unsigned long long int nbr, int flag, int 
 		return (2);
 	if (flag_up == 3)
 	{
-		write(1,"0x", 2);
+		ft_putchar_buff('0', tst);
+		ft_putchar_buff('x', tst);
 		return (2);
 	}
 	if (tst->op_htg && nbr)
 	{
 		if (flag_up)
-			write(1,"0X", 2);
+		{
+			ft_putchar_buff('0', tst);
+			ft_putchar_buff('X', tst);
+		}
 		else
-			write(1,"0x", 2);
+		{
+			ft_putchar_buff('0', tst);
+			ft_putchar_buff('x', tst);
+		}
 		return (2);
 	}
 	return (0);
@@ -36,13 +43,13 @@ static void			put_x_op_mns(t_ft_printf *tst, char *str, int c, int flag_up, unsi
 {
 	tst->width -= (put_sign(tst, nbr, 0, flag_up) + ft_max(c, tst->precision));
 	while (c++ < tst->precision)
-		write(1, "0", 1);
+		ft_putchar_buff('0', tst);
 	if (nbr > 0)
-		ft_putstr(str);
+		ft_putstr_buf(str, tst);
 	else if (tst->precision)
-		write(1, "0", 1);
+		ft_putchar_buff('0', tst);
 	while (tst->width-- > 0)
-		write(1, " ", 1);
+		ft_putchar_buff(' ', tst);
 }
 
 static void			put_x_op_0(t_ft_printf *tst, char *str, int c, int flag_up, unsigned long long int nbr)
@@ -51,30 +58,30 @@ static void			put_x_op_0(t_ft_printf *tst, char *str, int c, int flag_up, unsign
 	{
 		tst->width -= (put_sign(tst, nbr, !tst->op_0, flag_up) + ft_max(c, tst->precision));
 		while (tst->width-- >0)
-			write(1, " ", 1);
+			ft_putchar_buff(' ', tst);
 	}
 	else
 		tst->precision = tst->width - put_sign(tst, nbr, !tst->op_0, flag_up);
 	while (c++ < tst->precision)
-		write(1, "0", 1);
+		ft_putchar_buff('0', tst);
 	if (nbr > 0)
-		ft_putstr(str);
+		ft_putstr_buf(str, tst);
 	else if (tst->precision)
-		write(1, "0", 1);
+		ft_putchar_buff('0', tst);
 }
 
 static void		put_x_op_(t_ft_printf *tst, char *str, int c, int flag_up, unsigned long long int nbr)
 {
 	tst->width -= (put_sign(tst, nbr, 1, flag_up) + ft_max(c, tst->precision));
 	while (tst->width-- >0)
-		write(1, " ", 1);
+		ft_putchar_buff(' ', tst);
 	put_sign(tst, nbr, 0, flag_up);
 	while (c++ < tst->precision)
-		write(1, "0", 1);
+		ft_putchar_buff('0', tst);
 	if (nbr > 0)
-		ft_putstr(str);
+		ft_putstr_buf(str, tst);
 	else if (tst->precision)
-		write(1, "0", 1);
+		ft_putchar_buff('0', tst);
 }
 
 void			put_x(t_ft_printf *tst, unsigned long long int nbr, int flag_up)

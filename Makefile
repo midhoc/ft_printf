@@ -6,7 +6,7 @@
 #    By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/23 15:42:50 by hmidoun           #+#    #+#              #
-#    Updated: 2019/09/30 21:46:31 by hmidoun          ###   ########.fr        #
+#    Updated: 2019/10/01 03:33:16 by hmidoun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ SRC = ft_printf.c \
 		type_x_.c \
 		type_x.c \
 		ft_atoi.c \
+		ft_putstr_buff.c \
+		ft_putchar_buff.c \
+		ft_putnbr_unsigned_buf.c \
 	ft_bzero.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
@@ -102,10 +105,10 @@ OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 CC = gcc
 FLAG = -Wall -Werror -Wextra
 
-all : $(LIBFT) $(NAME)
+all : $(NAME)
 
 $(NAME) : $(OBJ) $(HEADER)
-	ar rc $(NAME) $(OBJ) $(LIBFT)
+	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
 obj:
@@ -116,11 +119,9 @@ obj/%.o: %.c $(HEADER) | obj
 
 clean:
 	rm -rf obj
-	make clean -C ./libft/
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./libft/
 
 re : fclean all
 

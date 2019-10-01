@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_buff.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/05 21:15:06 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 03:20:03 by hmidoun          ###   ########.fr       */
+/*   Created: 2019/10/01 03:18:24 by hmidoun           #+#    #+#             */
+/*   Updated: 2019/10/01 03:22:07 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char const *str)
+void	ft_putstr_buf(char const *str, t_ft_printf *tst)
 {
 	int i;
 
@@ -21,7 +21,7 @@ void	ft_putstr(char const *str)
 		i = 0;
 		while (*(str + i) != '\0')
 		{
-			ft_putchar(*(str + i));
+			ft_putchar_buff(*(str + i), tst);
 			i++;
 		}
 	}

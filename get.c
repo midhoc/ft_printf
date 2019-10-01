@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:08:36 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 02:21:54 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 06:32:07 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		get_lengths(char **str, t_ft_printf *tst)
 
 	s = "hljztL";
 	c = ft_strchr(s, **str);
-	if(!c)
+	if(!c || !*c)
 		return(0);
 	if (**str == 'h' && *((*str)+1) == 'h')
 	{
@@ -86,7 +86,7 @@ int		get_type(char **str, t_ft_printf *tst)
 
 	s = "diouxXcspf%O";
 	c = ft_strchr(s, **str);
-	if(!c)
+	if(!c || !*c)
 		return (0);
 	tst->type =(c - s);
 	(*str)++;

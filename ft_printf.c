@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/01 02:50:01 by hmidoun           #+#    #+#             */
+/*   Updated: 2019/10/01 06:22:26 by hmidoun          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	init_struct(t_ft_printf *tst)
@@ -13,7 +25,14 @@ void	init_struct(t_ft_printf *tst)
 	tst->type = -1;
 }
 
-int write_format(t_ft_printf *tst, va_list argv)
+void	init_buff(t_ft_printf *tst)
+{
+	ft_bzero(tst->buff, sizeof(tst->buff));
+	tst->n_buff = 0;
+	tst->length_buff = 0;
+}
+
+int		write_format(t_ft_printf *tst, va_list argv)
 {
 	if (tst->type == 0 || tst->type == 1)
 		type_d(tst, argv);
@@ -38,12 +57,13 @@ int write_format(t_ft_printf *tst, va_list argv)
 
 int		ft_printf(const char * str, ... )
  {
-	va_list argv;
+	va_list		argv;
 	t_ft_printf	tst;
-	int	c;
+	int			c;
 
 	c = 0;
 	va_start(argv, str);
+	init_buff(&tst);
 	while(*str)
 	{
 		if (*str == '%')
@@ -55,14 +75,15 @@ int		ft_printf(const char * str, ... )
 			//tst.op_pls, tst.op_mns, tst.op_sp, tst.op_0, tst.op_htg, tst.width, tst.precision, tst.length, tst.type);
 
 		}
-		else
+		else if(*str)
 		{
-			ft_putchar(*str);
+			ft_putchar_buff(*str, &tst);
 			str++;
 		}
 	}
 	va_end(argv);
-	return(1);
+	ft_print_buff(&tst);
+	return (1000 * tst.n_buff + tst.length_buff);
  }
 
 // void		get_s_e_m(double f, t_ft_float *flt)
@@ -119,32 +140,5 @@ int		ft_printf(const char * str, ... )
 // 		izan(flt, --i, p_5 * 5, k);
 // 	}
 // 	printf("\n%llu\n",s);
-// }
-
-// int main()
-// {
-// 	double x = 0.15555555556858;
-// 	#define M ("%o", 0);
-// 	// double	k = 1.81;
-// 	// get_s_e_m(k, &t);
-// 	// izan(&t, 52, 5, 0);
-// 	printf("%.55f\n",x);
-// for(int i = 0 ; i < 10; i++)
-// 	printf("%.55f\n", x *= (float)10);
-
-// 	//printf("\n%.100lf",k);
-// 	// unsigned long long int p = 1;
-// 	// for (int i=0; i < 50; i++ )
-// 	// 	printf("%llu\n", p*=5);
-
-// //("{%+0.-3d}", 0);
-// //		"{%+03d}", 0
-// 	// 	"{% 03d}", 0
-
-// // ft_printf M
-// // printf("\n");
-// // printf M
-// //ft_putstr(0);
-// 	return(0);
 // }
 

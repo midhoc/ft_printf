@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 21:38:07 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 03:26:17 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,18 @@ typedef struct s_ft_float
 
 typedef struct s_ft_printf
 {
-	int	op_mns;
-	int	op_pls;
-	int	op_0;
-	int	op_sp;
-	int	op_htg;
-	int	precision;
-	int	width;
-	int	type;
-	int	length;
+	char	buff[1000];
+	int		length_buff;
+	int		n_buff;
+	int		op_mns;
+	int		op_pls;
+	int		op_0;
+	int		op_sp;
+	int		op_htg;
+	int		precision;
+	int		width;
+	int		type;
+	int		length;
 }				t_ft_printf;
 
 int		get_width_precision(char **str, t_ft_printf *tst);
@@ -76,4 +79,11 @@ int		type_x(t_ft_printf *tst, va_list argv, int flag_up);
 void	put_x(t_ft_printf *tst, unsigned long long int nbr, int flag_up);
 
 int		count_digit_d(t_ft_printf *tst, long long int nbr);
+
+void	ft_putchar_buff(char c, t_ft_printf *tst);
+void	ft_print_buff(t_ft_printf *tst);
+void	ft_putchar_buff(char c, t_ft_printf *tst);
+void	ft_putstr_buf(char const *str, t_ft_printf *tst);
+void	ft_putnbr_unsigned_buf(unsigned long long int nb, t_ft_printf *tst);
+
 #endif

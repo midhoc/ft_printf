@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 03:59:49 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 03:01:12 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 05:22:31 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void			put_u(t_ft_printf *tst,unsigned long long int nbr)
 	{
 		tst->width -= ( ft_max(c, tst->precision));
 		while (c++ < tst->precision)
-			write(1, "0", 1);
-		if (nbr > 0)
-			ft_putnbr_unsigned(nbr);
+			ft_putchar_buff('0', tst);
+		if (nbr != 0)
+			ft_putnbr_unsigned_buf(nbr, tst);
 		else if (tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 		while (tst->width-- >0)
-			write(1, " ", 1);
+			ft_putchar_buff(' ', tst);
 	}
 	else if (tst->op_0)
 	{
@@ -52,28 +52,28 @@ void			put_u(t_ft_printf *tst,unsigned long long int nbr)
 		{
 			tst->width -= (ft_max(c, tst->precision));
 			while (tst->width-- >0)
-				write(1, " ", 1);
+				ft_putchar_buff(' ', tst);
 		}
 		else
 			tst->precision = tst->width;
 		while (c++ < tst->precision)
-			write(1, "0", 1);
-		if (nbr > 0)
-			ft_putnbr_unsigned(nbr);
+			ft_putchar_buff('0', tst);
+		if (nbr != 0)
+			ft_putnbr_unsigned_buf(nbr, tst);
 		else if (tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 	}
 	else
 	{
 		tst->width -= (ft_max(c, tst->precision));
 		while (tst->width-- >0)
-			write(1, " ", 1);
+			ft_putchar_buff(' ', tst);
 		while (c++ < tst->precision)
-			write(1, "0", 1);
-		if (nbr > 0)
-			ft_putnbr_unsigned(nbr);
+			ft_putchar_buff('0', tst);
+		if (nbr != 0)
+			ft_putnbr_unsigned_buf(nbr, tst);
 		else if (tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 	}
 }
 

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned_buf.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/05 21:15:06 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 03:20:03 by hmidoun          ###   ########.fr       */
+/*   Created: 2019/10/01 03:21:28 by hmidoun           #+#    #+#             */
+/*   Updated: 2019/10/01 05:25:53 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char const *str)
+void	ft_putnbr_unsigned_buf(unsigned long long int nb, t_ft_printf *tst)
 {
-	int i;
+	unsigned long long int				counter;
 
-	if (str)
+	counter = 1;
+	while (nb / counter > 9)
 	{
-		i = 0;
-		while (*(str + i) != '\0')
-		{
-			ft_putchar(*(str + i));
-			i++;
-		}
+		counter *= 10;
+	}
+	while (counter >= 1)
+	{
+		ft_putchar_buff('0' + nb / counter, tst);
+		nb = nb - (nb / counter) * counter;
+		counter /= 10;
 	}
 }

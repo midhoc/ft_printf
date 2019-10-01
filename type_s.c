@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:28:59 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/26 03:25:44 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 03:12:10 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	type_s_op_mns(t_ft_printf *tst, int i, char *c)
 	if(tst->precision >= 0 && tst->precision < i)
 	{
 		while(tst->precision--)
-			ft_putchar(*(c++));
+			ft_putchar_buff(*(c++), tst);
 	}
 	else
 	{
 		while(*c)
-			ft_putchar(*(c++));
+			ft_putchar_buff(*(c++), tst);
 	}
 	while (tst->width-- > 0)
-		ft_putchar(' ');
+		ft_putchar_buff(' ', tst);
 }
 
 void	type_s_op(t_ft_printf *tst, int i, char *c)
@@ -33,19 +33,19 @@ void	type_s_op(t_ft_printf *tst, int i, char *c)
 	while (tst->width-- > 0)
 	{
 		if (tst->op_0)
-			ft_putchar('0');
+			ft_putchar_buff('0', tst);
 		else
-			ft_putchar(' ');
+			ft_putchar_buff(' ', tst);
 	}
 	if(tst->precision >= 0 && tst->precision < i)
 	{
 		while(tst->precision--)
-			ft_putchar(*(c++));
+			ft_putchar_buff(*(c++), tst);
 	}
 	else
 	{
 		while(*c)
-			ft_putchar(*(c++));
+			ft_putchar_buff(*(c++), tst);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 17:18:35 by sshin             #+#    #+#             */
-/*   Updated: 2019/09/30 02:38:07 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 05:14:42 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_convert(unsigned long long int num, int flag_up)
 {
 	if (num >= 10)
 	{
-		if (flag_up)
+		if (flag_up == 1)
 			return (num - 10 + 'A');
 		return (num - 10 + 'a');
 	}

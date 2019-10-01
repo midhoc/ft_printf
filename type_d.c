@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/09/30 20:57:29 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/01 03:27:53 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int				put_sign(t_ft_printf *tst, long long int nbr, int flag)
 	if (flag && (nbr < 0 || tst->op_pls || tst->op_sp))
 		return(1);
 	if (nbr < 0)
-		write(1,"-", 1);
+		ft_putchar_buff('-', tst);
 	else if (tst->op_pls)
-		write(1, "+", 1);
+		ft_putchar_buff('+', tst);
 	else if (tst->op_sp)
-		write(1, " ", 1);
+		ft_putchar_buff(' ', tst);
 	else
 		return (0);
 	return (1);
@@ -59,15 +59,15 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 	{
 		tst->width -= (put_sign(tst, nbr, 0) + ft_max(c, tst->precision));
 		while (c++ < tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 		if (nbr < 0)
-			ft_putnbr_unsigned((unsigned long long)nbr * -1);
+			ft_putnbr_unsigned_buf((unsigned long long)nbr * -1, tst);
 		else if (nbr > 0)
-			ft_putnbr_unsigned((unsigned long long)nbr);
+			ft_putnbr_unsigned_buf((unsigned long long)nbr, tst);
 		else if (tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 		while (tst->width-- >0)
-			write(1, " ", 1);
+			ft_putchar_buff(' ', tst);
 	}
 	else if (tst->op_0)
 	{
@@ -75,33 +75,33 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 		{
 			tst->width -= (put_sign(tst, nbr, !tst->op_0) + ft_max(c, tst->precision));
 			while (tst->width-- >0)
-				write(1, " ", 1);
+				ft_putchar_buff(' ', tst);
 		}
 		else
 			tst->precision = tst->width - put_sign(tst, nbr, !tst->op_0);
 		while (c++ < tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 		if (nbr < 0)
-			ft_putnbr_unsigned((unsigned long long)nbr * -1);
+			ft_putnbr_unsigned_buf((unsigned long long)nbr * -1, tst);
 		else if (nbr > 0)
-			ft_putnbr_unsigned((unsigned long long)nbr);
+			ft_putnbr_unsigned_buf((unsigned long long)nbr, tst);
 		else if (tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 	}
 	else
 	{
 		tst->width -= (put_sign(tst, nbr, 1) + ft_max(c, tst->precision));
 		while (tst->width-- >0)
-			write(1, " ", 1);
+			ft_putchar_buff(' ', tst);
 		put_sign(tst, nbr, 0);
 		while (c++ < tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 		if (nbr < 0)
-			ft_putnbr_unsigned((unsigned long long)nbr * -1);
+			ft_putnbr_unsigned_buf((unsigned long long)nbr * -1, tst);
 		else if (nbr > 0)
-			ft_putnbr_unsigned((unsigned long long)nbr);
+			ft_putnbr_unsigned_buf((unsigned long long)nbr, tst);
 		else if (tst->precision)
-			write(1, "0", 1);
+			ft_putchar_buff('0', tst);
 	}
 }
 

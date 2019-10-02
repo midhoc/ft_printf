@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 18:58:14 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 02:54:26 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int				put_sign(t_ft_printf *tst, long long int nbr, int flag)
 void			put_d(t_ft_printf *tst, long long int nbr)
 {
 	int		c;
-	int		i;
+	// int		i;
 
-	i = 0;
+	// i = 0;
 	c = count_digit_d(tst, nbr);
 	if (tst->op_mns)
 	{
@@ -66,7 +66,7 @@ void			put_d(t_ft_printf *tst, long long int nbr)
 			ft_putnbr_unsigned_buf((unsigned long long)nbr, tst);
 		else if (tst->precision)
 			ft_putchar_buff('0', tst);
-		while (tst->width-- >0)
+		while (tst->width-- > 0)
 			ft_putchar_buff(' ', tst);
 	}
 	else if (tst->op_0)

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 03:26:17 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 02:52:08 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include "libft.h"
 
+
 # define H 0
 # define L 1
 # define J 2
@@ -24,6 +25,8 @@
 # define L_ 5
 # define HH 6
 # define LL 7
+
+
 
 typedef struct s_ft_float
 {
@@ -86,4 +89,6 @@ void	ft_putchar_buff(char c, t_ft_printf *tst);
 void	ft_putstr_buf(char const *str, t_ft_printf *tst);
 void	ft_putnbr_unsigned_buf(unsigned long long int nb, t_ft_printf *tst);
 
+
+void		type_f(t_ft_printf *tst, va_list argv);
 #endif

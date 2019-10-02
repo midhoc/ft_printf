@@ -5,7 +5,7 @@ int main()
 {
 	//double x = 0.15555555556858;
 // #define L ("%lx, %lx, %lX, %lX{%lf}{%Lf}", 0, ULONG_MAX,  0, ULONG_MAX)
-	#define M ("%f",DBL_MAX- 1)
+	#define M ("%f", 9.9999991)
 	// double	k = 1.81;
 	// get_s_e_m(k, &t);
 	// izan(&t, 52, 5, 0);
@@ -27,7 +27,7 @@ int c = ft_printf M;
  ft_printf("\n");
 int i = printf M;
 
-printf("\n%d\t%d\n",c ,i);
+//printf("\n%d\t%d\n",c ,i);
 
 
 

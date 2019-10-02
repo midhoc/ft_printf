@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 02:20:42 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 23:01:19 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 23:10:31 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				count_digit_f(t_ft_printf *tst, long double nbr)
 		nb = -1 * nbr;
 	else if (nbr > 0)
 		nb = nbr;
-	while (nb > 9)
+	while (nb >= 10)
 	{
 		nb /= 10;
 		counter++;

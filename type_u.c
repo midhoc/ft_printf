@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 03:59:49 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 19:23:51 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:13:55 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			put_u(t_ft_printf *tst,unsigned long long int nbr)
 }
 
 
-static int		type_u_hh(t_ft_printf *tst, va_list argv)
+static void	type_u_hh(t_ft_printf *tst, va_list argv)
 {
 	int c;
 
@@ -87,46 +87,41 @@ static int		type_u_hh(t_ft_printf *tst, va_list argv)
 		put_u(tst, (unsigned  char)c);
 	else
 		put_u(tst, (unsigned  int)c);
-	return(1);
 }
 
-static int		type_u_ll(t_ft_printf *tst, va_list argv)
+static void	type_u_ll(t_ft_printf *tst, va_list argv)
 {
 	unsigned long long int c;
 
 	c = va_arg(argv,unsigned  long long int);
 	put_u(tst, c);
-	return(1);
 }
 
-static int		type_u_l(t_ft_printf *tst, va_list argv)
+static void	type_u_l(t_ft_printf *tst, va_list argv)
 {
 	unsigned long int c;
 
 	c = va_arg(argv, unsigned long int);
 	put_u(tst, c);
-	return(1);
 }
 
-static int		type_u_z(t_ft_printf *tst, va_list argv)
+static void	type_u_z(t_ft_printf *tst, va_list argv)
 {
 	size_t c;
 
 	c = va_arg(argv, size_t);
 	put_u(tst, c);
-	return(1);
 }
 
-static int		type_u_j(t_ft_printf *tst, va_list argv)
+static void	type_u_j(t_ft_printf *tst, va_list argv)
 {
 	uintmax_t c;
 
 	c = va_arg(argv, uintmax_t);
 	put_u(tst, c);
-	return(1);
 }
 
-int		type_u(t_ft_printf *tst, va_list argv)
+void	type_u(t_ft_printf *tst, va_list argv)
 {
 	unsigned int c;
 
@@ -147,5 +142,4 @@ int		type_u(t_ft_printf *tst, va_list argv)
 		c = va_arg(argv, unsigned int);
 		put_u(tst, c);
 	}
-	return(1);
 }

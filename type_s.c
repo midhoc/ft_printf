@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:28:59 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 03:12:10 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:12:50 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	type_s_op(t_ft_printf *tst, int i, char *c)
 }
 
 
-int		type_s_(t_ft_printf *tst, va_list argv)
+void	type_s_(t_ft_printf *tst, va_list argv)
 {
 	char	*c;
 	int		i;
@@ -64,17 +64,12 @@ int		type_s_(t_ft_printf *tst, va_list argv)
 		type_s_op_mns(tst, i, c);
 	else
 		type_s_op(tst, i, c);
-	return(1);
 }
 
-int		type_s(t_ft_printf *tst, va_list argv)
+void	type_s(t_ft_printf *tst, va_list argv)
 {
 	if (tst->length == L)
 		type_s_l(tst, argv);
 	else
-	{
 		type_s_(tst, argv);
-	}
-
-	return(1);
 }

@@ -6,13 +6,13 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 03:25:03 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 05:41:24 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:08:05 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		type_c_(t_ft_printf *tst, va_list argv)
+void	type_c_(t_ft_printf *tst, va_list argv)
 {
 	char	c[2];
 
@@ -27,10 +27,9 @@ int		type_c_(t_ft_printf *tst, va_list argv)
 		type_s_op(tst, 1, c);
 	if (!c[0] && !tst->op_mns)
 		ft_putchar_buff(0, tst);
-	return(1);
 }
 
-int		type_c_l(t_ft_printf *tst, va_list argv)
+void	type_c_l(t_ft_printf *tst, va_list argv)
 {
 	wchar_t	c[2];
 
@@ -43,10 +42,9 @@ int		type_c_l(t_ft_printf *tst, va_list argv)
 		type_s_l_op_mns(tst, 1, c);
 	else
 		type_s_l_op(tst, 1, c);
-	return(1);
 }
 
-int		type_c(t_ft_printf *tst, va_list argv)
+void	type_c(t_ft_printf *tst, va_list argv)
 {
 	// if (tst->precision >= 0)
 		tst->precision = 1;
@@ -54,10 +52,9 @@ int		type_c(t_ft_printf *tst, va_list argv)
 		type_c_l(tst, argv);
 	else
 		type_c_(tst, argv);
-	return(1);
 }
 
-int		type_per(t_ft_printf *tst)
+void	type_per(t_ft_printf *tst)
 {
 	char	c[2];
 
@@ -69,5 +66,4 @@ int		type_per(t_ft_printf *tst)
 		type_s_op_mns(tst, 1, c);
 	else
 		type_s_op(tst, 1, c);
-	return(1);
 }

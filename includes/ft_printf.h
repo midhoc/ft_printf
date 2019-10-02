@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 01:05:21 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 02:52:08 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:18:23 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,31 +57,29 @@ int		get_lengths(char **str, t_ft_printf *tst);
 int		get_type(char **str, t_ft_printf *tst);
 int		get_format(char **str, t_ft_printf *tst);
 
-int		type_d(t_ft_printf *tst, va_list argv);
+void	type_d(t_ft_printf *tst, va_list argv);
 void	put_d(t_ft_printf *tst, long long int nbr);
 
-int		type_u(t_ft_printf *tst, va_list argv);
+void	type_u(t_ft_printf *tst, va_list argv);
 void	put_u(t_ft_printf *tst,unsigned long long int nbr);
 
-int		type_s(t_ft_printf *tst, va_list argv);
-int		type_s_l(t_ft_printf *tst, va_list argv);
+void	type_s(t_ft_printf *tst, va_list argv);
+void	type_s_l(t_ft_printf *tst, va_list argv);
 void	type_s_op(t_ft_printf *tst, int i, char *c);
 void	type_s_op_mns(t_ft_printf *tst, int i, char *c);
 void	type_s_l_op(t_ft_printf *tst, int i, int *c);
 void	type_s_l_op_mns(t_ft_printf *tst, int i, int *c);
 
-int		type_c(t_ft_printf *tst, va_list argv);
-int		type_c_l(t_ft_printf *tst, va_list argv);
-int		type_c_(t_ft_printf *tst, va_list argv);
-int		type_per(t_ft_printf *tst);
+void	type_c(t_ft_printf *tst, va_list argv);
+void	type_c_l(t_ft_printf *tst, va_list argv);
+void	type_c_(t_ft_printf *tst, va_list argv);
+void	type_per(t_ft_printf *tst);
 
-int		type_o(t_ft_printf *tst, va_list argv);
+void	type_o(t_ft_printf *tst, va_list argv);
 void	put_o(t_ft_printf *tst, unsigned long long int nbr);
 
-int		type_x(t_ft_printf *tst, va_list argv, int flag_up);
+void	type_x(t_ft_printf *tst, va_list argv, int flag_up);
 void	put_x(t_ft_printf *tst, unsigned long long int nbr, int flag_up);
-
-int		count_digit_d(t_ft_printf *tst, long long int nbr);
 
 void	ft_putchar_buff(char c, t_ft_printf *tst);
 void	ft_print_buff(t_ft_printf *tst);

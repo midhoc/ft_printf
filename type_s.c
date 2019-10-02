@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:28:59 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:12:50 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:55:08 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	type_s_op_mns(t_ft_printf *tst, int i, char *c)
 {
-	if(tst->precision >= 0 && tst->precision < i)
+	if (tst->precision >= 0 && tst->precision < i)
 	{
-		while(tst->precision--)
+		while (tst->precision--)
 			ft_putchar_buff(*(c++), tst);
 	}
 	else
 	{
-		while(*c)
+		while (*c)
 			ft_putchar_buff(*(c++), tst);
 	}
 	while (tst->width-- > 0)
@@ -37,14 +37,14 @@ void	type_s_op(t_ft_printf *tst, int i, char *c)
 		else
 			ft_putchar_buff(' ', tst);
 	}
-	if(tst->precision >= 0 && tst->precision < i)
+	if (tst->precision >= 0 && tst->precision < i)
 	{
-		while(tst->precision--)
+		while (tst->precision--)
 			ft_putchar_buff(*(c++), tst);
 	}
 	else
 	{
-		while(*c)
+		while (*c)
 			ft_putchar_buff(*(c++), tst);
 	}
 }

@@ -6,12 +6,11 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:25:19 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:10:44 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:40:20 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static void	type_d_hh(t_ft_printf *tst, va_list argv)
 {
@@ -48,27 +47,19 @@ static void	type_d_z(t_ft_printf *tst, va_list argv)
 	put_d(tst, c);
 }
 
-static void	type_d_j(t_ft_printf *tst, va_list argv)
-{
-	intmax_t c;
-
-	c = va_arg(argv, intmax_t);
-	put_d(tst, c);
-}
-
-void	type_d(t_ft_printf *tst, va_list argv)
+void		type_d(t_ft_printf *tst, va_list argv)
 {
 	int c;
 
 	if (tst->length == HH || tst->length == H)
 		type_d_hh(tst, argv);
-	else if(tst->length == LL)
+	else if (tst->length == LL)
 		type_d_ll(tst, argv);
-	else if(tst->length == L)
+	else if (tst->length == L)
 		type_d_l(tst, argv);
-	else if(tst->length == J)
-		type_d_j(tst, argv);
-	else if(tst->length == Z)
+	else if (tst->length == J)
+		put_d(tst, va_arg(argv, intmax_t));
+	else if (tst->length == Z)
 		type_d_z(tst, argv);
 	else
 	{

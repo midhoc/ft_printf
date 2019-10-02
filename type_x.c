@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 02:40:16 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:15:01 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 06:03:23 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ void	type_x(t_ft_printf *tst, va_list argv, int flag_up)
 		type_p(tst, argv);
 	else if (tst->length == HH || tst->length == H)
 		type_x_hh(tst, argv, flag_up);
-	else if(tst->length == LL)
+	else if (tst->length == LL)
 		type_x_ll(tst, argv, flag_up);
-	else if(tst->length == L)
+	else if (tst->length == L)
 		type_x_l(tst, argv, flag_up);
-	else if(tst->length == J)
+	else if (tst->length == J)
 		type_x_j(tst, argv, flag_up);
-	else if(tst->length == Z)
+	else if (tst->length == Z)
 		type_x_z(tst, argv, flag_up);
 	else
 	{

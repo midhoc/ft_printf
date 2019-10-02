@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 00:48:13 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:12:51 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:54:10 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@ int		ft_strlen_wchar_t(int *str)
 {
 	int	i;
 
-	i = -1;
-	while(str[++i]);
-	return(i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 void	type_s_l_op_mns(t_ft_printf *tst, int i, int *c)
 {
-	if(tst->precision >= 0 && tst->precision < i)
+	if (tst->precision >= 0 && tst->precision < i)
 	{
-		while(tst->precision--)
+		while (tst->precision--)
 			ft_putchar_buff(*(c++), tst);
 	}
 	else
 	{
-		while(*c)
+		while (*c)
 			ft_putchar_buff(*(c++), tst);
 	}
 	while (tst->width-- > 0)
@@ -46,14 +47,14 @@ void	type_s_l_op(t_ft_printf *tst, int i, int *c)
 		else
 			ft_putchar_buff(' ', tst);
 	}
-	if(tst->precision >= 0 && tst->precision < i)
+	if (tst->precision >= 0 && tst->precision < i)
 	{
-		while(tst->precision--)
+		while (tst->precision--)
 			ft_putchar_buff(*(c++), tst);
 	}
 	else
 	{
-		while(*c)
+		while (*c)
 			ft_putchar_buff(*(c++), tst);
 	}
 }

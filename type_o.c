@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 01:13:02 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:11:56 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:52:32 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ void		type_o(t_ft_printf *tst, va_list argv)
 
 	if (tst->length == HH || tst->length == H)
 		type_o_hh(tst, argv);
-	else if(tst->length == LL)
+	else if (tst->length == LL)
 		type_o_ll(tst, argv);
-	else if(tst->length == L)
+	else if (tst->length == L)
 		type_o_l(tst, argv);
-	else if(tst->length == J)
+	else if (tst->length == J)
 		type_o_j(tst, argv);
-	else if(tst->length == Z)
+	else if (tst->length == Z)
 		type_o_z(tst, argv);
 	else
 	{

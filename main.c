@@ -3,7 +3,7 @@ int main()
 {
 	//double x = 0.15555555556858;
 // #define L ("%lx, %lx, %lX, %lX{%lf}{%Lf}", 0, ULONG_MAX,  0, ULONG_MAX)
-	#define M ("{%f}", 1444565444646.6465424242242);
+	#define M ("%llX, %llX", 0llu, ULLONG_MAX)
 	// double	k = 1.81;
 	// get_s_e_m(k, &t);
 	// izan(&t, 52, 5, 0);

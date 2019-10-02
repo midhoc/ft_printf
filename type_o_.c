@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 03:54:23 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/01 06:14:34 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:52:44 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			put_o(t_ft_printf *tst, unsigned long long int nbr)
 	char	*str;
 
 	i = 0;
-	if(!(str = ft_itoa_base(nbr, 8, 0)))
+	if (!(str = ft_itoa_base(nbr, 8, 0)))
 		return;
 	if (nbr == 0 && tst->precision == 0)
 		c = 0;

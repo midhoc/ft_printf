@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 02:20:42 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:00:25 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 06:04:15 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			round_float(t_ft_printf *tst, long double *nbr)
 
 	i = -1;
 	add = 1;
-	if(*nbr < 0)
+	if (*nbr < 0)
 		tmp = *nbr * -1;
 	else
 		tmp = *nbr;
@@ -30,9 +30,9 @@ void			round_float(t_ft_printf *tst, long double *nbr)
 		tmp *= 10;
 		add /= 10;
 	}
-	if ((long long int)tmp  % 10 > 5)
+	if ((long long int)tmp % 10 > 5)
 	{
-		if(*nbr < 0)
+		if (*nbr < 0)
 			*nbr -= add;
 		else
 			*nbr += add;
@@ -50,8 +50,6 @@ int				count_digit_f(t_ft_printf *tst, long double nbr)
 		nb = -1 * nbr;
 	else if (nbr > 0)
 		nb = nbr;
-	// else if (nbr == 0 && tst->precision == 0)
-	//  	return (0);
 	while (nb > 9)
 	{
 		nb /= 10;
@@ -65,7 +63,7 @@ int				count_digit_f(t_ft_printf *tst, long double nbr)
 static int	put_sign(t_ft_printf *tst, long double nbr, int flag)
 {
 	if (flag && (nbr < 0 || tst->op_pls || tst->op_sp))
-		return(1);
+		return (1);
 	if (nbr < 0)
 		ft_putchar_buff('-', tst);
 	else if (tst->op_pls)
@@ -76,6 +74,7 @@ static int	put_sign(t_ft_printf *tst, long double nbr, int flag)
 		return (0);
 	return (1);
 }
+
 char		*ftoa(long double nbr, int c, t_ft_printf *tst)
 {
 	char		*str;
@@ -84,14 +83,11 @@ char		*ftoa(long double nbr, int c, t_ft_printf *tst)
 	long double	nb;
 
 	i = -1;
-	if(!(str = (char *)malloc(c * sizeof(char) + 1)))
+	if (!(str = (char *)malloc(c * sizeof(char) + 1)))
 		return (NULL);
 	str[c] = '\0';
-	if (nbr < 0)
-		nb = -1 * nbr;
-	else
-		nb = nbr;
-	str_itoa = ft_itoa_base((unsigned long long int)nb, 10 , 0);
+	nb = (nbr < 0) ? (-1 * nbr) : nbr;
+	str_itoa = ft_itoa_base((unsigned long long int)nb, 10, 0);
 	ft_strcpy(str, str_itoa);
 	free(str_itoa);
 	nb -= (unsigned long long int)nb;
@@ -106,6 +102,33 @@ char		*ftoa(long double nbr, int c, t_ft_printf *tst)
 	str[c - tst->precision + i] = '\0';
 	return (str);
 }
+
+static void	put_f_op_mns(t_ft_printf *tst, long double nbr, char *str, int c)
+{
+	tst->width -= (put_sign(tst, nbr, 0) + ft_max(c, tst->precision));
+	while (c++ < tst->precision)
+		ft_putchar_buff('0', tst);
+	ft_putstr_buf(str, tst);
+	while (tst->width-- > 0)
+		ft_putchar_buff(' ', tst);
+}
+
+static void	put_f_op_0(t_ft_printf *tst, long double nbr, char *str, int c)
+{
+	if (tst->precision >= 0)
+	{
+		tst->width -= (put_sign(tst, nbr, !tst->op_0)
+			+ ft_max(c, tst->precision));
+		while (tst->width-- > 0)
+			ft_putchar_buff(' ', tst);
+	}
+	else
+		tst->precision = tst->width - put_sign(tst, nbr, !tst->op_0);
+	while (c++ < tst->precision)
+		ft_putchar_buff('0', tst);
+	ft_putstr_buf(str, tst);
+}
+
 static void	put_f(t_ft_printf *tst, long double nbr)
 {
 	int		c;
@@ -115,32 +138,13 @@ static void	put_f(t_ft_printf *tst, long double nbr)
 	c = count_digit_f(tst, nbr);
 	str = ftoa(nbr, c, tst);
 	if (tst->op_mns)
-	{
-		tst->width -= (put_sign(tst, nbr, 0) + ft_max(c, tst->precision));
-		while (c++ < tst->precision)
-			ft_putchar_buff('0', tst);
-		ft_putstr_buf(str, tst);
-		while (tst->width-- > 0)
-			ft_putchar_buff(' ', tst);
-	}
+		put_f_op_mns(tst, nbr, str, c);
 	else if (tst->op_0)
-	{
-		if (tst->precision >= 0)
-		{
-			tst->width -= (put_sign(tst, nbr, !tst->op_0) + ft_max(c, tst->precision));
-			while (tst->width-- >0)
-				ft_putchar_buff(' ', tst);
-		}
-		else
-			tst->precision = tst->width - put_sign(tst, nbr, !tst->op_0);
-		while (c++ < tst->precision)
-			ft_putchar_buff('0', tst);
-		ft_putstr_buf(str, tst);
-	}
+		put_f_op_0(tst, nbr, str, c);
 	else
 	{
 		tst->width -= (put_sign(tst, nbr, 1) + ft_max(c, tst->precision));
-		while (tst->width-- >0)
+		while (tst->width-- > 0)
 			ft_putchar_buff(' ', tst);
 		put_sign(tst, nbr, 0);
 		while (c++ < tst->precision)

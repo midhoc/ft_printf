@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 03:25:03 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:08:05 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 05:33:30 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void	type_c_l(t_ft_printf *tst, va_list argv)
 
 void	type_c(t_ft_printf *tst, va_list argv)
 {
-	// if (tst->precision >= 0)
-		tst->precision = 1;
+	tst->precision = 1;
 	if (tst->length == L)
 		type_c_l(tst, argv);
 	else

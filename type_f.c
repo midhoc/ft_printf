@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 02:20:42 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 06:04:15 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 23:01:19 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@ void			round_float(t_ft_printf *tst, long double *nbr)
 	long double		add;
 
 	i = -1;
-	add = 1;
+	add = 1.1;
+	if (*nbr > ULLONG_MAX || *nbr < (double) -1 * ULLONG_MAX)
+		*nbr = 0;
 	if (*nbr < 0)
 		tmp = *nbr * -1;
 	else
 		tmp = *nbr;
-	while (++i < tst->precision)
+	while (++i <= tst->precision)
 	{
 		tmp -= (unsigned long long int)tmp;
 		tmp *= 10;
 		add /= 10;
 	}
-	if ((long long int)tmp % 10 > 5)
+	if ((unsigned long long int)tmp % 10 > 5)
 	{
 		if (*nbr < 0)
 			*nbr -= add;

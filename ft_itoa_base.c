@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 17:18:35 by sshin             #+#    #+#             */
-/*   Updated: 2019/10/02 05:22:26 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/02 22:34:15 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char		*ft_itoa_base(unsigned long long int value, int base, int flag_up)
 		temp = temp / base;
 		i++;
 	}
-	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * (i + 2))))
 		return (NULL);
 	str[i + 1] = '\0';
 	while (i >= 0)

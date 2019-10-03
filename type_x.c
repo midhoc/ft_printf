@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 02:40:16 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 06:03:23 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/03 02:38:18 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,7 @@ static void	type_p(t_ft_printf *tst, va_list argv)
 	put_x(tst, c, 3);
 }
 
-static void	type_x_z(t_ft_printf *tst, va_list argv, int flag_up)
-{
-	size_t c;
-
-	c = va_arg(argv, size_t);
-	put_x(tst, c, flag_up);
-}
-
-static void	type_x_j(t_ft_printf *tst, va_list argv, int flag_up)
-{
-	uintmax_t c;
-
-	c = va_arg(argv, uintmax_t);
-	put_x(tst, c, flag_up);
-}
-
-void	type_x(t_ft_printf *tst, va_list argv, int flag_up)
+void		type_x(t_ft_printf *tst, va_list argv, int flag_up)
 {
 	unsigned int	c;
 
@@ -76,9 +60,9 @@ void	type_x(t_ft_printf *tst, va_list argv, int flag_up)
 	else if (tst->length == L)
 		type_x_l(tst, argv, flag_up);
 	else if (tst->length == J)
-		type_x_j(tst, argv, flag_up);
+		put_x(tst, va_arg(argv, uintmax_t), flag_up);
 	else if (tst->length == Z)
-		type_x_z(tst, argv, flag_up);
+		put_x(tst, va_arg(argv, size_t), flag_up);
 	else
 	{
 		c = va_arg(argv, unsigned int);

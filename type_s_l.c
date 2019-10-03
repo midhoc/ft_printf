@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 00:48:13 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:54:10 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/03 02:23:24 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	type_s_l_op(t_ft_printf *tst, int i, int *c)
 	}
 }
 
-void		type_s_l(t_ft_printf *tst, va_list argv)
+void	type_s_l(t_ft_printf *tst, va_list argv)
 {
 	int	*c;
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 01:13:02 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:52:32 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/03 02:41:38 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,6 @@ static void	type_o_z(t_ft_printf *tst, va_list argv)
 	put_o(tst, c);
 }
 
-static void	type_o_j(t_ft_printf *tst, va_list argv)
-{
-	uintmax_t c;
-
-	c = va_arg(argv, uintmax_t);
-	put_o(tst, c);
-}
-
 void		type_o(t_ft_printf *tst, va_list argv)
 {
 	unsigned int	c;
@@ -66,7 +58,7 @@ void		type_o(t_ft_printf *tst, va_list argv)
 	else if (tst->length == L)
 		type_o_l(tst, argv);
 	else if (tst->length == J)
-		type_o_j(tst, argv);
+		put_o(tst, va_arg(argv, uintmax_t));
 	else if (tst->length == Z)
 		type_o_z(tst, argv);
 	else

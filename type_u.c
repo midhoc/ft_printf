@@ -6,83 +6,11 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 03:59:49 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 06:02:52 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/03 02:40:37 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int				count_digit_u(t_ft_printf *tst, unsigned long long int nb)
-{
-	long int	counter;
-
-	counter = 0;
-	if (nb == 0 && tst->precision == 0)
-		return (0);
-	while (nb > 9)
-	{
-		nb /= 10;
-		counter++;
-	}
-	return (counter + 1);
-}
-
-static void		put_u_op_mns(t_ft_printf *tst,
-							unsigned long long int nbr, int c)
-{
-	tst->width -= (ft_max(c, tst->precision));
-	while (c++ < tst->precision)
-		ft_putchar_buff('0', tst);
-	if (nbr != 0)
-		ft_putnbr_unsigned_buf(nbr, tst);
-	else if (tst->precision)
-		ft_putchar_buff('0', tst);
-	while (tst->width-- > 0)
-		ft_putchar_buff(' ', tst);
-}
-
-static void		put_u_op_0(t_ft_printf *tst, unsigned long long int nbr, int c)
-{
-	if (tst->precision >= 0)
-	{
-		tst->width -= (ft_max(c, tst->precision));
-		while (tst->width-- > 0)
-			ft_putchar_buff(' ', tst);
-	}
-	else
-		tst->precision = tst->width;
-	while (c++ < tst->precision)
-		ft_putchar_buff('0', tst);
-	if (nbr != 0)
-		ft_putnbr_unsigned_buf(nbr, tst);
-	else if (tst->precision)
-		ft_putchar_buff('0', tst);
-}
-
-void			put_u(t_ft_printf *tst, unsigned long long int nbr)
-{
-	int		c;
-	int		i;
-
-	i = 0;
-	c = count_digit_u(tst, nbr);
-	if (tst->op_mns)
-		put_u_op_mns(tst, nbr, c);
-	else if (tst->op_0)
-		put_u_op_0(tst, nbr, c);
-	else
-	{
-		tst->width -= (ft_max(c, tst->precision));
-		while (tst->width-- > 0)
-			ft_putchar_buff(' ', tst);
-		while (c++ < tst->precision)
-			ft_putchar_buff('0', tst);
-		if (nbr != 0)
-			ft_putnbr_unsigned_buf(nbr, tst);
-		else if (tst->precision)
-			ft_putchar_buff('0', tst);
-	}
-}
 
 static void	type_u_hh(t_ft_printf *tst, va_list argv)
 {
@@ -119,15 +47,7 @@ static void	type_u_z(t_ft_printf *tst, va_list argv)
 	put_u(tst, c);
 }
 
-static void	type_u_j(t_ft_printf *tst, va_list argv)
-{
-	uintmax_t c;
-
-	c = va_arg(argv, uintmax_t);
-	put_u(tst, c);
-}
-
-void	type_u(t_ft_printf *tst, va_list argv)
+void		type_u(t_ft_printf *tst, va_list argv)
 {
 	unsigned int c;
 
@@ -140,7 +60,7 @@ void	type_u(t_ft_printf *tst, va_list argv)
 	else if (tst->length == L)
 		type_u_l(tst, argv);
 	else if (tst->length == J)
-		type_u_j(tst, argv);
+		put_u(tst, va_arg(argv, uintmax_t));
 	else if (tst->length == Z)
 		type_u_z(tst, argv);
 	else

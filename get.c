@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 18:08:36 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:32:54 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/03 02:18:16 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int		get_format(char **str, t_ft_printf *tst)
 	(*str)++;
 	while (get_option(str, tst)
 			|| get_width_precision(str, tst)
-			|| get_lengths(str, tst));
+			|| get_lengths(str, tst))
+	{
+	}
 	return (get_type(str, tst));
 }

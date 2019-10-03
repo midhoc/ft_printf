@@ -6,7 +6,7 @@
 #    By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/23 15:42:50 by hmidoun           #+#    #+#              #
-#    Updated: 2019/10/02 05:15:37 by hmidoun          ###   ########.fr        #
+#    Updated: 2019/10/03 02:46:00 by hmidoun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = ft_printf.c \
 		type_s_l.c \
 		type_s.c \
 		type_u.c \
+		type_u_.c \
 		type_x_.c \
 		type_x.c \
 		ft_atoi.c \
@@ -27,6 +28,7 @@ SRC = ft_printf.c \
 		ft_putchar_buff.c \
 		ft_putnbr_unsigned_buf.c \
 		type_f.c \
+		type_f_.c \
 		type_d_.c \
 	ft_bzero.c \
 	ft_isalnum.c \

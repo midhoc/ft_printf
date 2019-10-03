@@ -6,7 +6,7 @@
 /*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 22:28:59 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/02 05:55:08 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/03 02:22:49 by hmidoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	type_s_op(t_ft_printf *tst, int i, char *c)
 			ft_putchar_buff(*(c++), tst);
 	}
 }
-
 
 void	type_s_(t_ft_printf *tst, va_list argv)
 {

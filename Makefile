@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+         #
+#    By: midounhocine <midounhocine@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/23 15:42:50 by hmidoun           #+#    #+#              #
-#    Updated: 2019/10/03 02:46:00 by hmidoun          ###   ########.fr        #
+#    Updated: 2019/10/16 20:21:25 by midounhocin      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,7 +118,7 @@ $(NAME) : $(OBJ) $(HEADER)
 obj:
 	mkdir -p obj
 
-obj/%.o: %.c $(HEADER) | obj
+obj/%.o: src/%.c $(HEADER) | obj
 	$(CC) $(FLAG) -c $< -o $@ $(INCLUDE_PATH)
 
 clean:

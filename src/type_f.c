@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_f.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmidoun <hmidoun@student.42.fr>            +#+  +:+       +#+        */
+/*   By: midounhocine <midounhocine@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 02:20:42 by hmidoun           #+#    #+#             */
-/*   Updated: 2019/10/03 02:47:18 by hmidoun          ###   ########.fr       */
+/*   Updated: 2019/10/16 20:30:57 by midounhocin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void		round_float(t_ft_printf *tst, long double *nbr)
 	if ((unsigned long long int)tmp % 10 > 5)
 	{
 		if (*nbr < 0)
-			*nbr -= add;
+			*nbr -= (add * 10);
 		else
-			*nbr += add;
+			*nbr += (add * 10);
 	}
 }
 
